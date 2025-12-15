@@ -1,0 +1,3 @@
+models:
+  gpt-oss-20b:
+    cmd: llama-server --port ${PORT} --jinja --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf --no-warmup --ctx-size 60000 -ngl 99 -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
