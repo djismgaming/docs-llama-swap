@@ -2,6 +2,12 @@
 
 A minimal repository for the llama-swap project.
 
+## Running llama-swap on windows
+```posh
+winget install llama-swap
+llama-swap -watch-config -config c:\Users\Ismael\code\llama-swap\config.yaml
+```
+
 ## Files
 
 - `gpt-oss.gbnf` – the grammar file for the GPT-OSS parser. See the [gpt-oss.gbnf](gpt-oss.gbnf) file for details.
