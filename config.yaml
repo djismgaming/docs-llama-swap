@@ -1,9 +1,64 @@
-models:
-  GPT-OSS-20B:
-    cmd: llama-server --port ${PORT} -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf --jinja --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf --no-warmup --ctx-size 60000 -ngl 99
-  GPT-OSS-20B-CMOE-2:
-    cmd: llama-server --port ${PORT} --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf --jinja --temp 1.0 --top-p 1.0 --ctx-size 100000 -ncmoe 2
-  Qwen3-Coder-30B-A3B:
-    cmd: llama-server --port ${PORT} -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf --jinja --temp 0.7 --min-p 0.0 --top-p 0.80 --top-k 20 --repeat-penalty 1.05 --ctx-size 60000 -ncmoe 20
+# Llama-Swap config and run
+# C:\Users\Ismael\apps\llama-swap\llama-swap.exe -watch-config -config c:\Users\Ismael\code\llama-swap\config.yaml
 
-# --jinja --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf --no-warmup --ctx-size 60000 -ngl 99 
+metricsMaxInMemory: 100
+macros:
+  "llamacpp-vulkan": >
+    C:\Users\Ismael\apps\llamacpp-vulkan\llama-server.exe
+    --port ${PORT}
+  "llamacpp-rocm": >
+    C:\Users\Ismael\apps\llamacpp-rocm\llama-server.exe
+    --port ${PORT}
+
+models:
+  GPT-OSS-20B-Vulkan:
+    name: "GPT-OSS 20B Vulkan"
+    ttl: 900 # 15 minutes
+    cmd: | # support for multi-line
+      ${llamacpp-vulkan}
+      --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf
+      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
+      --jinja
+      --temp 1.0
+      --top-p 1.0
+      --no-mmap
+
+  GPT-OSS-20B-ROCM:
+    name: "GPT-OSS 20B ROCM"
+    ttl: 900 # 15 minutes
+    cmd: | # support for multi-line
+      ${llamacpp-rocm}
+      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
+      --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf
+      --jinja
+      --temp 1.0
+      --top-p 1.0
+      --no-mmap
+
+  Qwen3-Coder-30B-A3B-Vulkan:
+    name: "Qwen3 Coder 30B A3B Vulkan"
+    ttl: 900 # 15 minutes
+    cmd: | # support for multi-line
+      ${llamacpp-vulkan}
+      -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
+      --jinja
+      --temp 0.7
+      --min-p 0.0
+      --top-p 0.80
+      --top-k 20
+      --repeat-penalty 1.05
+      --fit-ctx 60000
+
+  Qwen3-Coder-30B-A3B-ROCM:
+    name: "Qwen3 Coder 30B A3B ROCM"
+    ttl: 900 # 15 minutes
+    cmd: | # support for multi-line
+      ${llamacpp-rocm}
+      -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
+      --jinja
+      --temp 0.7
+      --min-p 0.0
+      --top-p 0.80
+      --top-k 20
+      --repeat-penalty 1.05
+      --fit-ctx 60000
