@@ -1,3 +1,7 @@
 models:
-  gpt-oss-20b:
-    cmd: llama-server --port ${PORT} --jinja --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf --no-warmup --ctx-size 60000 -ngl 99 -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
+  GPT-OSS-20B:
+    cmd: llama-server --port ${PORT} -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf --jinja --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf --no-warmup --ctx-size 60000 -ngl 99
+  GPT-OSS-20B-CMOE-2:
+    cmd: llama-server --port ${PORT} -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf --jinja --temp 1.0 --top-p 1.0 --ctx-size 100000 -ncmoe 2
+  Qwen3-Coder-30B-A3B:
+    cmd: llama-server --port ${PORT} -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf --jinja --temp 0.7 --min-p 0.0 --top-p 0.80 --top-k 20 --repeat-penalty 1.05 --ctx-size 60000 -ncmoe 20
