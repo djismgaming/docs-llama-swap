@@ -48,6 +48,7 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 60000
+      --no-mmap
 
   Qwen3-Coder-30B-A3B-ROCM:
     name: "Qwen3 Coder 30B A3B ROCM"
@@ -62,6 +63,7 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 60000
+      --no-mmap
 
   whispercpp:
     name: "Whisper.cpp CPU"
