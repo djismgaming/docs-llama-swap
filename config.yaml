@@ -62,3 +62,19 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 60000
+
+  whispercpp:
+    name: "Whisper.cpp CPU"
+    ttl: 900 # 15 minutes
+    cmd: | 
+      C:\Users\Ismael\apps\whispercpp\whisper-server.exe
+      --host 127.0.0.1
+      --port ${PORT}
+      -m C:\Users\Ismael\apps\whispercpp\models\ggml-small.bin
+      --convert
+      -l auto
+      --request-path /v1/audio/transcriptions
+      --inference-path ""
+    checkEndpoint: /v1/audio/transcriptions/
+    env:
+      - "RESPONSE_FORMAT=TXT"
