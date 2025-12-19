@@ -18,7 +18,7 @@ models:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-vulkan}
-      --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf
+      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
       -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
       --jinja
       --temp 1.0
@@ -31,7 +31,7 @@ models:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
-      --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf
+      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
       -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
       --jinja
       --temp 1.0
