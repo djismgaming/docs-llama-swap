@@ -14,6 +14,8 @@ models:
   GPT-OSS-20B-Vulkan:
     name: "GPT-OSS 20B Vulkan"
     ttl: 900 # seconds to unload the model after use
+    filters:
+      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-vulkan}
       --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf
@@ -26,6 +28,8 @@ models:
   GPT-OSS-20B-ROCM:
     name: "GPT-OSS 20B ROCM"
     ttl: 900 # seconds to unload the model after use
+    filters:
+      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
@@ -38,6 +42,8 @@ models:
   Qwen3-Coder-30B-A3B-Vulkan:
     name: "Qwen3 Coder 30B A3B Vulkan"
     ttl: 900 # seconds to unload the model after use
+    filters:
+      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-vulkan}
       -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
@@ -53,6 +59,8 @@ models:
   Qwen3-Coder-30B-A3B-ROCM:
     name: "Qwen3 Coder 30B A3B ROCM"
     ttl: 900 # seconds to unload the model after use
+    filters:
+      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
@@ -62,7 +70,33 @@ models:
       --top-p 0.80
       --top-k 20
       --repeat-penalty 1.05
-      --fit-ctx 60000
+      --fit-ctx 30000
+      --no-mmap
+
+  Nemotron-3-Nano-30B-A3B-Vulkan:
+    name: Nemotron 3 Nano 30B A3B Vulkan
+    ttl: 900
+    filters:
+      stripParams: "temperature, top_p, top_k"
+    cmd: |
+      ${llamacpp-vulkan}
+      --temp 0.6
+      --top-p 0.95
+      -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
+      --no-mmap
+
+  Devstral-Small-2-24B:
+    name: Devstral Small 2 24B
+    ttl: 900
+    filters:
+      stripParams: "temperature, top_p, top_k, min_p"
+    cmd: |
+      ${llamacpp-vulkan}
+      -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
+      --jinja
+      --min-p 0.01
+      --temp 0.15
+      --fit-ctx 16384
       --no-mmap
 
   whispercpp:
@@ -77,6 +111,8 @@ models:
       --inference-path ""
       --convert
       -l auto
+      -pp
+      -pr
     checkEndpoint: /v1/audio/transcriptions/
     unlisted: true
     env:
