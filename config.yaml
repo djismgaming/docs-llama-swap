@@ -23,7 +23,6 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
-      --no-mmap
 
   GPT-OSS-20B-ROCM:
     name: "GPT-OSS 20B ROCM"
@@ -32,12 +31,12 @@ models:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
-      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
       --grammar-file C:\Users\Ismael\code\llama-swap\gpt-oss.gbnf
+      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
       --jinja
       --temp 1.0
       --top-p 1.0
-      --no-mmap
+
 
   Qwen3-Coder-30B-A3B-Vulkan:
     name: "Qwen3 Coder 30B A3B Vulkan"
@@ -54,7 +53,6 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 60000
-      --no-mmap
 
   Qwen3-Coder-30B-A3B-ROCM:
     name: "Qwen3 Coder 30B A3B ROCM"
@@ -71,7 +69,6 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 30000
-      --no-mmap
 
   Nemotron-3-Nano-30B-A3B-Vulkan:
     name: Nemotron 3 Nano 30B A3B Vulkan
@@ -83,7 +80,6 @@ models:
       --temp 0.6
       --top-p 0.95
       -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
-      --no-mmap
 
   Devstral-Small-2-24B:
     name: Devstral Small 2 24B
@@ -97,7 +93,6 @@ models:
       --min-p 0.01
       --temp 0.15
       --fit-ctx 16384
-      --no-mmap
 
   whispercpp:
     name: "Whisper.cpp CPU"
