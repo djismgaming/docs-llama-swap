@@ -1,6 +1,6 @@
 # llama-swap
 
-A minimal repository for the llama-swap project documentation.
+A minimal repository for the local llama-swap project documentation. To use with [Llama-swap](https://github.com/mostlygeek/llama-swap)
 
 ## Includes
 
