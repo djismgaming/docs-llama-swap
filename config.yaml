@@ -23,6 +23,7 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
+      --no-mmap
 
   GPT-OSS-20B-ROCM:
     name: "GPT-OSS 20B ROCM"
@@ -36,6 +37,7 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
+      --no-mmap
 
 
   Qwen3-Coder-30B-A3B-Vulkan:
@@ -53,6 +55,7 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 60000
+      --no-mmap
 
   Qwen3-Coder-30B-A3B-ROCM:
     name: "Qwen3 Coder 30B A3B ROCM"
@@ -69,6 +72,7 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 30000
+      --no-mmap
 
   Nemotron-3-Nano-30B-A3B-Vulkan:
     name: Nemotron 3 Nano 30B A3B Vulkan
@@ -79,6 +83,7 @@ models:
       ${llamacpp-vulkan}
       --temp 0.6
       --top-p 0.95
+      --no-mmap
       -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
 
   Devstral-Small-2-24B:
@@ -93,6 +98,7 @@ models:
       --min-p 0.01
       --temp 0.15
       --fit-ctx 16384
+      --no-mmap
 
   whispercpp:
     name: "Whisper.cpp CPU"
