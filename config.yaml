@@ -11,8 +11,7 @@ macros:
     --port ${PORT}
 
 models:
-  GPT-OSS-20B-Vulkan:
-    name: "GPT-OSS 20B Vulkan"
+  GPT-OSS 20B Vulkan:
     ttl: 900 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
@@ -25,8 +24,7 @@ models:
       --top-p 1.0
       --no-mmap
 
-  GPT-OSS-20B-ROCM:
-    name: "GPT-OSS 20B ROCM"
+  GPT-OSS 20B ROCm:
     ttl: 900 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
@@ -40,8 +38,7 @@ models:
       --no-mmap
 
 
-  Qwen3-Coder-30B-A3B-Vulkan:
-    name: "Qwen3 Coder 30B A3B Vulkan"
+  Qwen3 Coder 30B A3B Q4_K_M Vulkan:
     ttl: 900 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
@@ -57,8 +54,7 @@ models:
       --fit-ctx 60000
       --no-mmap
 
-  Qwen3-Coder-30B-A3B-ROCM:
-    name: "Qwen3 Coder 30B A3B ROCM"
+  Qwen3 Coder 30B A3B Q4_K_M ROCm:
     ttl: 900 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
@@ -74,8 +70,7 @@ models:
       --fit-ctx 30000
       --no-mmap
 
-  Qwen3-Coder-30B-A3B-Instruct-Q3_K_S-ROCm:
-    name: "Qwen3 Coder 30B A3B Instruct Q3_K_S ROCm"
+  Qwen3 Coder 30B A3B Instruct Q3_K_S ROCm:
     ttl: 900 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
@@ -90,9 +85,19 @@ models:
       --repeat-penalty 1.05
       --no-mmap
 
+  Devstral Small 2 24B Instruct 2512 GGUF Q3_K_S ROCm:
+    ttl: 900 # seconds to unload the model after use
+    filters:
+      stripParams: "temperature, top_p, top_k, min_p"
+    cmd: | # support for multi-line
+      ${llamacpp-rocm}
+      -m F:/ai/lmstudio-models/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF/Devstral-Small-2-24B-Instruct-2512-Q3_K_S.gguf
+      --jinja
+      --temp 0.15
+      --min-p 0.01
+      --no-mmap
 
-  Nemotron-3-Nano-30B-A3B-Vulkan:
-    name: Nemotron 3 Nano 30B A3B Vulkan
+  Nemotron 3 Nano 30B A3B Q4_K_M Vulkan:
     ttl: 900
     filters:
       stripParams: "temperature, top_p, top_k"
@@ -103,8 +108,7 @@ models:
       --no-mmap
       -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
 
-  Devstral-Small-2-24B-Q4_K_XL:
-    name: Devstral Small 2 24B Q4_K_XL
+  Devstral Small 2 24B Q4_K_XL Vulkan:
     ttl: 900
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
@@ -119,8 +123,7 @@ models:
       --fit-ctx 32000
 
 
-  whispercpp:
-    name: "Whisper.cpp CPU"
+  Whisper.cpp CPU:
     ttl: 60 # seconds to unload the model after use
     cmd: | 
       C:\Users\Ismael\apps\whispercpp\whisper-server.exe
