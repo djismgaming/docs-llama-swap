@@ -6,13 +6,17 @@ macros:
   "llamacpp-vulkan": >
     C:\Users\Ismael\apps\llamacpp-vulkan\llama-server.exe
     --port ${PORT}
+    --no-mmap
+    --flash-attn 0
   "llamacpp-rocm": >
     C:\Users\Ismael\apps\llamacpp-rocm\llama-server.exe
     --port ${PORT}
+    --no-mmap
+    --flash-attn 0
 
 models:
   GPT-OSS 20B Vulkan:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 300 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
@@ -22,10 +26,9 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
-      --no-mmap
 
   GPT-OSS 20B ROCm:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 300 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
@@ -35,11 +38,10 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
-      --no-mmap
-
+      
 
   Qwen3 Coder 30B A3B Q4_K_M Vulkan:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 300 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
@@ -52,10 +54,9 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 60000
-      --no-mmap
 
   Qwen3 Coder 30B A3B Q4_K_M ROCm:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 300 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
@@ -68,10 +69,9 @@ models:
       --top-k 20
       --repeat-penalty 1.05
       --fit-ctx 30000
-      --no-mmap
 
   Qwen3 Coder 30B A3B Instruct Q3_K_S ROCm:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 300 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
@@ -83,10 +83,9 @@ models:
       --top-p 0.80
       --top-k 20
       --repeat-penalty 1.05
-      --no-mmap
 
   Devstral Small 2 24B Instruct 2512 GGUF Q3_K_S ROCm:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 300 # seconds to unload the model after use
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
@@ -95,21 +94,29 @@ models:
       --jinja
       --temp 0.15
       --min-p 0.01
-      --no-mmap
 
   Nemotron 3 Nano 30B A3B Q4_K_M Vulkan:
-    ttl: 900
+    ttl: 300
     filters:
       stripParams: "temperature, top_p, top_k"
     cmd: |
       ${llamacpp-vulkan}
       --temp 0.6
       --top-p 0.95
-      --no-mmap
+      -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
+
+  Nemotron 3 Nano 30B A3B Q4_K_M ROCm:
+    ttl: 300
+    filters:
+      stripParams: "temperature, top_p, top_k"
+    cmd: |
+      ${llamacpp-rocm}
+      --temp 0.6
+      --top-p 0.95
       -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
 
   Devstral Small 2 24B Q4_K_XL Vulkan:
-    ttl: 900
+    ttl: 300
     filters:
       stripParams: "temperature, top_p, top_k, min_p"
     cmd: |
@@ -118,12 +125,42 @@ models:
       --jinja
       --min-p 0.01
       --temp 0.15
-      --no-mmap
       --cpu-moe
       --fit-ctx 32000
 
+  Devstral Small 2 24B Q4_K_XL ROCm:
+    ttl: 300 # seconds to unload the model after use
+    filters:
+      stripParams: "temperature, top_p, top_k, min_p"
+    cmd: |
+      ${llamacpp-rocm}
+      -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
+      --jinja
+      --min-p 0.01
+      --temp 0.15
+      --cpu-moe
+      --fit-ctx 32000
 
-  Whisper.cpp CPU:
+  Qwen2.5-Coder-7B:
+    ttl: 300 # seconds to unload the model after use
+    cmd: |
+      ${llamacpp-rocm}
+      -m F:/ai/lmstudio-models/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
+
+  Qwen2.5-Coder-1.5B:
+    ttl: 300 # seconds to unload the model after use
+    cmd: |
+      ${llamacpp-rocm}
+      -m F:/ai/lmstudio-models/lmstudio-community/Qwen2.5-Coder-1.5B-Instruct-GGUF/Qwen2.5-Coder-1.5B-Instruct-Q8_0.gguf
+
+  Ministral-3-14B-Reasoning-2512:
+    ttl: 60 # seconds to unload the model after use
+    cmd: |
+      ${llamacpp-rocm}
+      -m F:/ai/lmstudio-models/lmstudio-community/Ministral-3-14B-Reasoning-2512-GGUF/Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf
+      --mmproj F:\ai\lmstudio-models\lmstudio-community\Ministral-3-14B-Reasoning-2512-GGUF\mmproj-Ministral-3-14B-Reasoning-2512-F16.gguf
+
+  whispercpp:
     ttl: 60 # seconds to unload the model after use
     cmd: | 
       C:\Users\Ismael\apps\whispercpp\whisper-server.exe
