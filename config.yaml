@@ -7,12 +7,12 @@ macros:
     C:\Users\Ismael\apps\llamacpp-vulkan\llama-server.exe
     --port ${PORT}
     --no-mmap
-    --flash-attn 0
+
   "llamacpp-rocm": >
     C:\Users\Ismael\apps\llamacpp-rocm\llama-server.exe
     --port ${PORT}
     --no-mmap
-    --flash-attn 0
+
 
 models:
   GPT-OSS 20B Vulkan:
