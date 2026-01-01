@@ -158,3 +158,10 @@ models:
     unlisted: true
     env:
       - "RESPONSE_FORMAT=TXT"
+
+groups:
+  group1:
+    swap: false
+    members:
+      - "GPT-OSS 20B ROCm"
+      - "Qwen2.5-Coder-1.5B"
