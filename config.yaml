@@ -16,7 +16,7 @@ macros:
 
 models:
   GPT-OSS 20B Vulkan:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-vulkan}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
@@ -26,7 +26,7 @@ models:
       --top-p 1.0
 
   GPT-OSS 20B ROCm:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
@@ -37,7 +37,7 @@ models:
       
 
   Qwen3 Coder 30B A3B Q4_K_M Vulkan:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-vulkan}
       -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
@@ -50,7 +50,7 @@ models:
       --fit-ctx 60000
 
   Qwen3 Coder 30B A3B Q4_K_M ROCm:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
@@ -63,7 +63,7 @@ models:
       --fit-ctx 60000
 
   Qwen3 Coder 30B A3B Instruct Q3_K_S ROCm:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF/Qwen3-Coder-30B-A3B-Instruct-Q3_K_S.gguf
@@ -75,7 +75,7 @@ models:
       --repeat-penalty 1.05
 
   Devstral Small 2 24B Instruct 2512 GGUF Q3_K_S ROCm:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF/Devstral-Small-2-24B-Instruct-2512-Q3_K_S.gguf
@@ -85,7 +85,7 @@ models:
       --fit-ctx 60000
 
   Nemotron 3 Nano 30B A3B Q4_K_M Vulkan:
-    ttl: 300
+    ttl: 900
     cmd: |
       ${llamacpp-vulkan}
       --temp 0.6
@@ -93,7 +93,7 @@ models:
       -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
 
   Nemotron 3 Nano 30B A3B Q4_K_M ROCm:
-    ttl: 300
+    ttl: 900
     cmd: |
       ${llamacpp-rocm}
       --temp 0.6
@@ -101,7 +101,7 @@ models:
       -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
 
   Devstral Small 2 24B Q4_K_XL Vulkan:
-    ttl: 300
+    ttl: 900
     cmd: |
       ${llamacpp-vulkan}
       -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
@@ -112,7 +112,7 @@ models:
       --fit-ctx 32000
 
   Devstral Small 2 24B Q4_K_XL ROCm:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
@@ -123,26 +123,26 @@ models:
       --fit-ctx 32000
 
   Qwen2.5-Coder-7B:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
 
   Qwen2.5-Coder-1.5B:
-    ttl: 300 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/lmstudio-community/Qwen2.5-Coder-1.5B-Instruct-GGUF/Qwen2.5-Coder-1.5B-Instruct-Q8_0.gguf
 
   Ministral-3-14B-Reasoning-2512:
-    ttl: 60 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/lmstudio-community/Ministral-3-14B-Reasoning-2512-GGUF/Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf
       --mmproj F:\ai\lmstudio-models\lmstudio-community\Ministral-3-14B-Reasoning-2512-GGUF\mmproj-Ministral-3-14B-Reasoning-2512-F16.gguf
 
   whispercpp:
-    ttl: 60 # seconds to unload the model after use
+    ttl: 900 # seconds to unload the model after use
     cmd: | 
       C:\Users\Ismael\apps\whispercpp\whisper-server.exe
       --host 127.0.0.1
