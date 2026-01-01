@@ -17,8 +17,6 @@ macros:
 models:
   GPT-OSS 20B Vulkan:
     ttl: 300 # seconds to unload the model after use
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-vulkan}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
@@ -29,8 +27,6 @@ models:
 
   GPT-OSS 20B ROCm:
     ttl: 300 # seconds to unload the model after use
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
@@ -42,8 +38,6 @@ models:
 
   Qwen3 Coder 30B A3B Q4_K_M Vulkan:
     ttl: 300 # seconds to unload the model after use
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-vulkan}
       -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
@@ -57,8 +51,6 @@ models:
 
   Qwen3 Coder 30B A3B Q4_K_M ROCm:
     ttl: 300 # seconds to unload the model after use
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
@@ -72,8 +64,6 @@ models:
 
   Qwen3 Coder 30B A3B Instruct Q3_K_S ROCm:
     ttl: 300 # seconds to unload the model after use
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF/Qwen3-Coder-30B-A3B-Instruct-Q3_K_S.gguf
@@ -86,8 +76,6 @@ models:
 
   Devstral Small 2 24B Instruct 2512 GGUF Q3_K_S ROCm:
     ttl: 300 # seconds to unload the model after use
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF/Devstral-Small-2-24B-Instruct-2512-Q3_K_S.gguf
@@ -98,8 +86,6 @@ models:
 
   Nemotron 3 Nano 30B A3B Q4_K_M Vulkan:
     ttl: 300
-    filters:
-      stripParams: "temperature, top_p, top_k"
     cmd: |
       ${llamacpp-vulkan}
       --temp 0.6
@@ -108,8 +94,6 @@ models:
 
   Nemotron 3 Nano 30B A3B Q4_K_M ROCm:
     ttl: 300
-    filters:
-      stripParams: "temperature, top_p, top_k"
     cmd: |
       ${llamacpp-rocm}
       --temp 0.6
@@ -118,8 +102,6 @@ models:
 
   Devstral Small 2 24B Q4_K_XL Vulkan:
     ttl: 300
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: |
       ${llamacpp-vulkan}
       -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
@@ -131,8 +113,6 @@ models:
 
   Devstral Small 2 24B Q4_K_XL ROCm:
     ttl: 300 # seconds to unload the model after use
-    filters:
-      stripParams: "temperature, top_p, top_k, min_p"
     cmd: |
       ${llamacpp-rocm}
       -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
