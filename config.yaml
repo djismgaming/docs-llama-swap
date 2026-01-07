@@ -24,17 +24,29 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
+      --fit-ctx 60000
 
   GPT-OSS 20B ROCm:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
-      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
       -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
       --jinja
       --temp 1.0
       --top-p 1.0
-      
+      --fit-ctx 60000
+#      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
+
+  GPT-OSS 20B ROCm UD:
+    ttl: 900 # seconds to unload the model after use
+    cmd: | # support for multi-line
+      ${llamacpp-rocm}
+      -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
+      --jinja
+      --temp 1.0
+      --top-p 1.0
+      --fit-ctx 60000
+#      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
 
   Qwen3 Coder 30B A3B Q4_K_M Vulkan:
     ttl: 900 # seconds to unload the model after use
@@ -73,6 +85,7 @@ models:
       --top-p 0.80
       --top-k 20
       --repeat-penalty 1.05
+      --fit-ctx 60000
 
   Devstral Small 2 24B Instruct 2512 GGUF Q3_K_S ROCm:
     ttl: 900 # seconds to unload the model after use
@@ -109,7 +122,7 @@ models:
       --min-p 0.01
       --temp 0.15
       --cpu-moe
-      --fit-ctx 32000
+      --fit-ctx 60000
 
   Devstral Small 2 24B Q4_K_XL ROCm:
     ttl: 900 # seconds to unload the model after use
@@ -120,7 +133,7 @@ models:
       --min-p 0.01
       --temp 0.15
       --cpu-moe
-      --fit-ctx 32000
+      --fit-ctx 60000
 
   Qwen2.5-Coder-7B:
     ttl: 900 # seconds to unload the model after use
@@ -140,6 +153,7 @@ models:
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/lmstudio-community/Ministral-3-14B-Reasoning-2512-GGUF/Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf
       --mmproj F:\ai\lmstudio-models\lmstudio-community\Ministral-3-14B-Reasoning-2512-GGUF\mmproj-Ministral-3-14B-Reasoning-2512-F16.gguf
+      --fit-ctx 60000
 
   whispercpp:
     ttl: 900 # seconds to unload the model after use
@@ -163,5 +177,5 @@ groups:
   group1:
     swap: false
     members:
-      - "GPT-OSS 20B ROCm"
+      - "GPT-OSS 20B ROCm UD"
       - "Qwen2.5-Coder-1.5B"
