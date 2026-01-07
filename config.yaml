@@ -24,7 +24,7 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
-      --fit-ctx 60000
+      --ctx-size 80000
 
   GPT-OSS 20B ROCm:
     ttl: 900 # seconds to unload the model after use
@@ -35,7 +35,7 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
-      --fit-ctx 60000
+      --ctx-size 80000
 
   GPT-OSS 20B ROCm UD:
     ttl: 900 # seconds to unload the model after use
@@ -46,7 +46,7 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
-      --fit-ctx 60000
+      --ctx-size 80000
 
   Qwen3 Coder 30B A3B Q4_K_M Vulkan:
     ttl: 900 # seconds to unload the model after use
