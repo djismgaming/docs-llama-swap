@@ -47,11 +47,16 @@ models:
       --temp 1.0
       --top-p 1.0
       --ctx-size 80000
+      --parallel 1
+      -b 2056 -ub 256
+      --repeat-penalty 1.0 --repeat-last-n 200
+      --cache-type-k q8_0 --cache-type-v q8_0
 
-  GPT-OSS 20B ROCm UD Test:
+  Model Test:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
+      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
       -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
       --jinja
       --temp 1.0
@@ -63,7 +68,7 @@ models:
       --repeat-penalty 1.0 --repeat-last-n 200
       --cache-type-k q8_0 --cache-type-v q8_0
       --mlock
-
+      
 
   Qwen3 Coder 30B A3B Q4_K_M Vulkan:
     ttl: 900 # seconds to unload the model after use
