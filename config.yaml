@@ -19,8 +19,8 @@ models:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
-      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
       -m F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-UD-Q4_K_XL.gguf
+      --mmproj F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/mmproj-F32.gguf
       --jinja
       --temp 0.8
       --top-p 0.6
