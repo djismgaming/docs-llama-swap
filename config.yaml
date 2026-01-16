@@ -13,44 +13,21 @@ macros:
     --port ${PORT}
     --no-mmap
 
-
 models:
   GLM-4.6V-Flash:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-UD-Q4_K_XL.gguf
-      --mmproj F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/mmproj-F32.gguf
       --jinja
       --temp 0.8
       --top-p 0.6
       --top-k 2
       --repeat_penalty 1.1
       --ctx-size 80000
+#--mmproj F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/mmproj-F32.gguf
 
-  GPT-OSS-20B-Vulkan:
-    ttl: 900 # seconds to unload the model after use
-    cmd: | # support for multi-line
-      ${llamacpp-vulkan}
-      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
-      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
-      --jinja
-      --temp 1.0
-      --top-p 1.0
-      --ctx-size 80000
-
-  GPT-OSS 20B ROCm:
-    ttl: 900 # seconds to unload the model after use
-    cmd: | # support for multi-line
-      ${llamacpp-rocm}
-      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
-      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
-      --jinja
-      --temp 1.0
-      --top-p 1.0
-      --ctx-size 80000
-
-  GPT-OSS 20B ROCm UD:
+  GPT-OSS-20B:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
@@ -73,57 +50,13 @@ models:
       --jinja
       --temp 1.0
       --top-p 1.0
-      --ctx-size 80000
+      --ctx-size 20000
       --parallel 1
       -b 2056 -ub 256
       --repeat-penalty 1.0 --repeat-last-n 200
       --cache-type-k q8_0 --cache-type-v q8_0
 
-  Model Test:
-    ttl: 900 # seconds to unload the model after use
-    cmd: | # support for multi-line
-      ${llamacpp-rocm}
-      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
-      -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
-      --jinja
-      --temp 1.0
-      --top-p 1.0
-      --ctx-size 80000
-      --chat-template-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss-francine-jinja-template.txt
-      --parallel 1
-      -b 2056 -ub 256
-      --repeat-penalty 1.0 --repeat-last-n 200
-      --cache-type-k q8_0 --cache-type-v q8_0
-      --mlock
-      
-
-  Qwen3 Coder 30B A3B Q4_K_M Vulkan:
-    ttl: 900 # seconds to unload the model after use
-    cmd: | # support for multi-line
-      ${llamacpp-vulkan}
-      -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
-      --jinja
-      --temp 0.7
-      --min-p 0.0
-      --top-p 0.80
-      --top-k 20
-      --repeat-penalty 1.05
-      --fit-ctx 60000
-
-  Qwen3 Coder 30B A3B Q4_K_M ROCm:
-    ttl: 900 # seconds to unload the model after use
-    cmd: | # support for multi-line
-      ${llamacpp-rocm}
-      -m F:\ai\lmstudio-models\lmstudio-community\Qwen3-Coder-30B-A3B-Instruct-GGUF\Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf
-      --jinja
-      --temp 0.7
-      --min-p 0.0
-      --top-p 0.80
-      --top-k 20
-      --repeat-penalty 1.05
-      --fit-ctx 60000
-
-  Qwen3 Coder 30B A3B Instruct Q3_K_S ROCm:
+  Qwen3-Coder-30B-A3B-Instruct:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
@@ -134,54 +67,6 @@ models:
       --top-p 0.80
       --top-k 20
       --repeat-penalty 1.05
-      --fit-ctx 60000
-
-  Devstral Small 2 24B Instruct 2512 GGUF Q3_K_S ROCm:
-    ttl: 900 # seconds to unload the model after use
-    cmd: | # support for multi-line
-      ${llamacpp-rocm}
-      -m F:/ai/lmstudio-models/unsloth/Devstral-Small-2-24B-Instruct-2512-GGUF/Devstral-Small-2-24B-Instruct-2512-Q3_K_S.gguf
-      --jinja
-      --temp 0.15
-      --min-p 0.01
-      --fit-ctx 60000
-
-  Nemotron 3 Nano 30B A3B Q4_K_M Vulkan:
-    ttl: 900
-    cmd: |
-      ${llamacpp-vulkan}
-      --temp 0.6
-      --top-p 0.95
-      -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
-
-  Nemotron 3 Nano 30B A3B Q4_K_M ROCm:
-    ttl: 900
-    cmd: |
-      ${llamacpp-rocm}
-      --temp 0.6
-      --top-p 0.95
-      -m F:/ai/lmstudio-models/lmstudio-community/NVIDIA-Nemotron-3-Nano-30B-A3B-GGUF/NVIDIA-Nemotron-3-Nano-30B-A3B-Q4_K_M.gguf
-
-  Devstral Small 2 24B Q4_K_XL Vulkan:
-    ttl: 900
-    cmd: |
-      ${llamacpp-vulkan}
-      -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
-      --jinja
-      --min-p 0.01
-      --temp 0.15
-      --cpu-moe
-      --fit-ctx 60000
-
-  Devstral Small 2 24B Q4_K_XL ROCm:
-    ttl: 900 # seconds to unload the model after use
-    cmd: |
-      ${llamacpp-rocm}
-      -m F:\ai\lmstudio-models\unsloth\Devstral-Small-2-24B-Instruct-2512-GGUF\Devstral-Small-2-24B-Instruct-2512-UD-Q4_K_XL.gguf
-      --jinja
-      --min-p 0.01
-      --temp 0.15
-      --cpu-moe
       --fit-ctx 60000
 
   Qwen2.5-Coder-7B:
