@@ -93,34 +93,20 @@ models:
     cmd: | # support for multi-line
       ${llamacpp-rocm-80k}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
-      -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
+      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
       --temp 1.0
       --top-p 1.0
       --parallel 1
       -b 2056 -ub 256
       --repeat-penalty 1.0 --repeat-last-n 200
       --cache-type-k q8_0 --cache-type-v q8_0
-
-  GPT-OSS-20B CMOE:
-    ttl: 900 # seconds to unload the model after use
-    cmd: | # support for multi-line
-      ${llamacpp-rocm-80k}
-      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
-      -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
-      --temp 1.0
-      --top-p 1.0
-      --parallel 1
-      -b 2056 -ub 256
-      --repeat-penalty 1.0 --repeat-last-n 200
-      --cache-type-k q8_0 --cache-type-v q8_0
-      --cpu-moe
 
   GPT-OSS-20B Full:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
-      -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
+      -m F:\ai\lmstudio-models\lmstudio-community\gpt-oss-20b-GGUF\gpt-oss-20b-MXFP4.gguf
       --temp 1.0
       --top-p 1.0
       --parallel 1
