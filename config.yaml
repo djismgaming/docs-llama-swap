@@ -12,66 +12,117 @@ macros:
     C:\Users\Ismael\apps\llamacpp-rocm\llama-server.exe
     --port ${PORT}
     --no-mmap
+
+  "llamacpp-rocm-80k": >
+    C:\Users\Ismael\apps\llamacpp-rocm\llama-server.exe
+    --port ${PORT}
+    --no-mmap
+    --jinja
+    --ctx-size 80000
+
+  "llamacpp-rocm-60k": >
+    C:\Users\Ismael\apps\llamacpp-rocm\llama-server.exe
+    --port ${PORT}
+    --no-mmap
+    --jinja
+    --ctx-size 60000
+
+  "llamacpp-rocm-40k": >
+    C:\Users\Ismael\apps\llamacpp-rocm\llama-server.exe
+    --port ${PORT}
+    --no-mmap
+    --jinja
+    --ctx-size 40000
+
 models:
   GLM-4.7-Flash Tool:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
-      ${llamacpp-rocm}
+      ${llamacpp-rocm-80k}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.7-Flash-GGUF/GLM-4.7-Flash-UD-Q4_K_XL.gguf
-      --jinja
       --temp 0.7 --top-p 1.0
       --min-p 0.01
       --cpu-moe
-      --ctx-size 80000
+
+  GLM-4.7-Flash Tool 40K:
+    ttl: 900 # seconds to unload the model after use
+    cmd: | # support for multi-line
+      ${llamacpp-rocm-40k}
+      -m F:/ai/lmstudio-models/unsloth/GLM-4.7-Flash-GGUF/GLM-4.7-Flash-UD-Q4_K_XL.gguf
+      --temp 0.7 --top-p 1.0
+      --min-p 0.01
+      --cpu-moe
 
   GLM-4.7-Flash Chat:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
-      ${llamacpp-rocm}
+      ${llamacpp-rocm-40k}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.7-Flash-GGUF/GLM-4.7-Flash-UD-Q4_K_XL.gguf
-      --jinja
       --temp 1.0 --top-p 0.95
       --min-p 0.01
       --cpu-moe
-      --ctx-size 80000
 
   GLM-4.6V-Flash:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
-      ${llamacpp-rocm}
-      -m F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-UD-Q4_K_XL.gguf
-      --jinja
+      ${llamacpp-rocm-80k}
+      -m F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-Q4_K_M.gguf
+      --flash-attn on
       --temp 0.8
       --top-p 0.6
       --top-k 2
       --repeat_penalty 1.1
-      --ctx-size 80000
-#--mmproj F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/mmproj-F32.gguf
+
+  GLM-4.6V-Flash Vision:
+    ttl: 900 # seconds to unload the model after use
+    cmd: | # support for multi-line
+      ${llamacpp-rocm-80k}
+      -m F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-Q4_K_XL.gguf
+      --flash-attn on
+      --temp 0.8
+      --top-p 0.6
+      --top-k 2
+      --repeat_penalty 1.1
+      --mmproj F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/mmproj-F32.gguf
 
   GPT-OSS-20B:
     ttl: 900 # seconds to unload the model after use
+    aliases:
+      - gpt-oss-20b
+      - gpt-oss
     cmd: | # support for multi-line
-      ${llamacpp-rocm}
+      ${llamacpp-rocm-80k}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
       -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
-      --jinja
       --temp 1.0
       --top-p 1.0
-      --ctx-size 80000
       --parallel 1
       -b 2056 -ub 256
       --repeat-penalty 1.0 --repeat-last-n 200
       --cache-type-k q8_0 --cache-type-v q8_0
-  gpt-oss:
+
+  GPT-OSS-20B CMOE:
+    ttl: 900 # seconds to unload the model after use
+    cmd: | # support for multi-line
+      ${llamacpp-rocm-80k}
+      --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
+      -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
+      --temp 1.0
+      --top-p 1.0
+      --parallel 1
+      -b 2056 -ub 256
+      --repeat-penalty 1.0 --repeat-last-n 200
+      --cache-type-k q8_0 --cache-type-v q8_0
+      --cpu-moe
+
+  GPT-OSS-20B Full:
     ttl: 900 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
       -m F:/ai/lmstudio-models/unsloth/gpt-oss-20b-GGUF/gpt-oss-20b-UD-Q4_K_XL.gguf
-      --jinja
       --temp 1.0
       --top-p 1.0
-      --ctx-size 20000
       --parallel 1
       -b 2056 -ub 256
       --repeat-penalty 1.0 --repeat-last-n 200
@@ -105,10 +156,15 @@ models:
   Ministral-3-14B-Reasoning-2512:
     ttl: 900 # seconds to unload the model after use
     cmd: |
-      ${llamacpp-rocm}
+      ${llamacpp-rocm-60k}
       -m F:/ai/lmstudio-models/lmstudio-community/Ministral-3-14B-Reasoning-2512-GGUF/Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf
       --mmproj F:\ai\lmstudio-models\lmstudio-community\Ministral-3-14B-Reasoning-2512-GGUF\mmproj-Ministral-3-14B-Reasoning-2512-F16.gguf
-      --fit-ctx 60000
+
+  nomic-embed-text:
+    ttl: 900 # seconds to unload the model after use
+    cmd: |
+      ${llamacpp-rocm}
+      -m F:/ai/lmstudio-models/ggml-org/Nomic-Embed-Text-V2-GGUF/nomic-embed-text-v2-moe-q8_0.gguf
 
   whispercpp:
     ttl: 900 # seconds to unload the model after use
@@ -132,5 +188,6 @@ groups:
   group1:
     swap: false
     members:
-      - "GPT-OSS 20B ROCm UD"
+      - "GPT-OSS-20B"
       - "Qwen2.5-Coder-1.5B"
+      - "nomic-embed-text"
