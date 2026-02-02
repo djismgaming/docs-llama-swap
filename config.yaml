@@ -2,6 +2,7 @@
 # C:\Users\Ismael\apps\llama-swap\llama-swap.exe -watch-config -config c:\Users\Ismael\code\llama-swap\config.yaml
 
 metricsMaxInMemory: 100 # maximum records for metrics
+sendLoadingState: true
 macros:
   "llamacpp-vulkan": >
     C:\Users\Ismael\apps\llamacpp-vulkan\llama-server.exe
@@ -167,7 +168,7 @@ models:
       -pp
       -pr
     checkEndpoint: /v1/audio/transcriptions/
-    unlisted: true
+    unlisted: false
     env:
       - "RESPONSE_FORMAT=TXT"
   whispercpp1:
@@ -204,7 +205,6 @@ models:
     unlisted: true
     env:
       - "RESPONSE_FORMAT=TXT"
-
 groups:
   group1:
     swap: false
