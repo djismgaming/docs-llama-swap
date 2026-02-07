@@ -2,6 +2,10 @@
 #        Llama-Swap       #
 ###########################
 
+Write-Host "Stopping llama-swap service..."
+# Stop llama-swap service
+sudo nssm stop llama-swap
+
 # Define repo and asset pattern
 $Owner = "mostlygeek"
 $Repo = "llama-swap"
@@ -73,3 +77,8 @@ Remove-Item $ZipFile -Force
 # Verify installation (assuming the binary is named 'llama-server.exe')
 Write-Host "Verifying installation..."
 & "$HOME\apps\llama-swap\llama-swap.exe" --version
+
+Write-Host "Starting llama-swap service..."
+
+# Start llama-swap service
+sudo nssm start llama-swap

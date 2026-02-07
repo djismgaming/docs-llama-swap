@@ -44,7 +44,7 @@ macros:
     --ctx-size 30000
 models:
   GLM-4.6V-Flash:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm-80k}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-Q4_K_M.gguf
@@ -54,7 +54,7 @@ models:
       --top-k 2
       --repeat_penalty 1.1
   GLM-4.6V-Flash Vision:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm-80k}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/GLM-4.6V-Flash-Q4_K_XL.gguf
@@ -65,7 +65,9 @@ models:
       --repeat_penalty 1.1
       --mmproj F:/ai/lmstudio-models/unsloth/GLM-4.6V-Flash-GGUF/mmproj-F32.gguf
   GLM-4.7-Flash Tool:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
+    aliases:
+      - glm-4.7
     cmd: | # support for multi-line
       ${llamacpp-rocm-80k}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.7-Flash-GGUF/GLM-4.7-Flash-UD-Q3_K_XL.gguf
@@ -73,7 +75,7 @@ models:
       --n-cpu-moe 6
       --spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 48 --draft-max 64
   GLM-4.7-Flash Tool 40K:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm-40k}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.7-Flash-GGUF/GLM-4.7-Flash-UD-Q3_K_XL.gguf
@@ -82,7 +84,7 @@ models:
       --n-cpu-moe 6
       --spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 48 --draft-max 64
   GLM-4.7-Flash Chat:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm-40k}
       -m F:/ai/lmstudio-models/unsloth/GLM-4.7-Flash-GGUF/GLM-4.7-Flash-UD-Q3_K_XL.gguf
@@ -91,7 +93,7 @@ models:
       --n-cpu-moe 6
       --spec-type ngram-mod --spec-ngram-size-n 24 --draft-min 48 --draft-max 64
   GPT-OSS-20B:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     aliases:
       - gpt-oss-20b
       - gpt-oss
@@ -105,7 +107,7 @@ models:
       --repeat-penalty 1.0 --repeat-last-n 200
       --cache-type-k q8_0 --cache-type-v q8_0
   GPT-OSS-20B Full:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm}
       --grammar-file C:\Users\Ismael\code\docs-llama-swap\gpt-oss.gbnf
@@ -116,7 +118,7 @@ models:
       --repeat-penalty 1.0 --repeat-last-n 200
       --cache-type-k q8_0 --cache-type-v q8_0
   Qwen3-Coder-30B-A3B:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | # support for multi-line
       ${llamacpp-rocm-30k}
       -m F:/ai/lmstudio-models/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF/Qwen3-Coder-30B-A3B-Instruct-Q3_K_S.gguf
@@ -128,41 +130,41 @@ models:
       --repeat-penalty 1.05
       -ot ".ffn_(up|down)_exps.=CPU"
   Qwen2.5-Coder-14B:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:\ai\lmstudio-models\lmstudio-community\Qwen2.5-Coder-14B-Instruct-GGUF\Qwen2.5-Coder-14B-Instruct-Q6_K.gguf
       --batch-size 512
       --gpu-layers 999
   Qwen2.5-Coder-7B:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
   Qwen2.5-Coder-1.5B:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/lmstudio-community/Qwen2.5-Coder-1.5B-Instruct-GGUF/Qwen2.5-Coder-1.5B-Instruct-Q8_0.gguf
   Ministral-3-14B-Reasoning-2512 Q4:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm-60k}
       -m F:/ai/lmstudio-models/lmstudio-community/Ministral-3-14B-Reasoning-2512-GGUF/Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf
       --mmproj F:\ai\lmstudio-models\lmstudio-community\Ministral-3-14B-Reasoning-2512-GGUF\mmproj-Ministral-3-14B-Reasoning-2512-F16.gguf
   Ministral-3-14B-Reasoning-2512 Q6:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm-60k}
       -m F:\ai\lmstudio-models\lmstudio-community\Ministral-3-14B-Reasoning-2512-GGUF\Ministral-3-14B-Reasoning-2512-Q6_K.gguf
       --mmproj F:\ai\lmstudio-models\lmstudio-community\Ministral-3-14B-Reasoning-2512-GGUF\mmproj-Ministral-3-14B-Reasoning-2512-F16.gguf
   nomic-embed-text:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: |
       ${llamacpp-rocm}
       -m F:/ai/lmstudio-models/ggml-org/Nomic-Embed-Text-V2-GGUF/nomic-embed-text-v2-moe-q8_0.gguf
   whispercpp:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | 
       C:\Users\Ismael\apps\whispercpp\whisper-server.exe
       --host 127.0.0.1
@@ -179,7 +181,7 @@ models:
     env:
       - "RESPONSE_FORMAT=TXT"
   whispercpp1:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | 
       C:\Users\Ismael\apps\whispercpp\whisper-server.exe
       --host 127.0.0.1
@@ -196,7 +198,7 @@ models:
     env:
       - "RESPONSE_FORMAT=TXT"
   whispercpp2:
-    ttl: 900 # seconds to unload the model after use
+    ttl: 1800 # seconds to unload the model after use
     cmd: | 
       C:\Users\Ismael\apps\whispercpp\whisper-server.exe
       --host 127.0.0.1
